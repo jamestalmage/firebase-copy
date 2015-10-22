@@ -35,7 +35,7 @@ console.log('end');
 // output is:
 // 1a
 // 1b
-// 3
+// end
 // 2
 ```
 
