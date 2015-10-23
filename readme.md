@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save firebase-copy
+$ npm install --save firebase firebase-copy
 ```
 
 
