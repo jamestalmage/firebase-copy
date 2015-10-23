@@ -2,6 +2,7 @@
 var assert = require('assert');
 var firebaseCopy = require('./');
 var sinon = require('sinon');
+var path = require('path');
 var assertSpy = sinon.assert;
 
 it('should create distinct copies of the Firebase constructor', function (done) {
@@ -48,4 +49,19 @@ it('should create distinct copies of the Firebase constructor', function (done) 
 		assert.strictEqual(snap.val(), 'hello');
 		done();
 	});
+});
+
+it('should call custom resolver', function () {
+	var called = false;
+	firebaseCopy(function (requestedPath, resolvedPath) {
+		if (requestedPath === 'faye-websocket') {
+			called = true;
+			assert.strictEqual(
+				resolvedPath,
+				path.resolve(__dirname, 'node_modules/firebase/node_modules/faye-websocket/lib/faye/websocket.js')
+			);
+		}
+		return require(resolvedPath); // eslint-disable-line global-require
+	});
+	assert(called);
 });
