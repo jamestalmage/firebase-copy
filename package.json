@@ -1,6 +1,6 @@
 {
   "name": "firebase-copy",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Create a copy of the Firebase constructor with its own global state",
   "license": "MIT",
   "repository": "jamestalmage/firebase-copy",
